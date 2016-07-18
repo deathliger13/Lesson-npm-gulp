@@ -2,10 +2,20 @@
 <html>
 <head>
   <link href="compiled/styles.css" rel="stylesheet"></link>
-  <script src="node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="node_modules/angular/angular.js"></script>
 </head>
-<body>
-  <h1>Hello World</h1>
+<body ng-app="myApp" ng-controller="myCtrl">
+  <h1>Hello World / {{testString}}</h1>
+  <input type="text" ng-model="testString">
+  <br/>
+  <br/>
+  <label>Search: <input ng-model="searchText"></label>
+  <ul>
+    <li ng-repeat="item in items | filter:searchText">
+      <h2>{{item.name}}</h2>
+      <h2>{{item.phone}}</h2>
+    </li>
+  </ul>
   <script src="compiled/app.js"></script>
 </body>
 </html>

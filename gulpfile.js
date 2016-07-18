@@ -16,11 +16,13 @@ gulp.task('sass', function () {
 
 gulp.task('scripts', function () {
   var es6transpiler = require('gulp-es6-transpiler'),
-      uglify = require('gulp-uglify');
+      uglify = require('gulp-uglify'),
+      ngAnnotate = require('gulp-ng-annotate');
   return gulp.src('./scripts/*.js')
     .pipe(sourcemaps.init())
-    .pipe(es6transpiler())
+    // .pipe(es6transpiler())
     .pipe(concat('app.js'))
+    .pipe(ngAnnotate())
     .pipe(uglify())
     .pipe(sourcemaps.write())
     .pipe(gulp.dest('./compiled'));
